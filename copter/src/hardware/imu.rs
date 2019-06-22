@@ -102,13 +102,13 @@ impl IMU {
 
         let mut imu = IMU {
             gyroscope: gyroscope.unwrap().clone(),
-            gyroscope_offsets: Vector3::zero(),
+            gyroscope_offsets: Vector3::zeros(),
             accelerometer: accelerometer.unwrap().clone(),
-            accelerometer_offsets: Vector3::zero(),
+            accelerometer_offsets: Vector3::zeros(),
             magnetometer: magnetometer.unwrap().clone(),
-            magnetometer_offsets: Vector3::zero(),
-            magnetometer_rotation: Matrix3::zero(),
-            magnetometer_gains: Vector3::zero(),
+            magnetometer_offsets: Vector3::zeros(),
+            magnetometer_rotation: Matrix3::zeros(),
+            magnetometer_gains: Vector3::zeros(),
             logger: logger,
         };
 
@@ -368,7 +368,7 @@ impl IMU {
         offsets /= 201.0;
         offsets = offsets - Vector3::new(0.0, 0.0, G_TO_MPSPS);
 
-        calibs.accelerometer = Some(Ellipsoid::new(offsets, Matrix3::zero(), Vector3::zero()));
+        calibs.accelerometer = Some(Ellipsoid::new(offsets, Matrix3::zeros(), Vector3::zeros()));
     }
 }
 

@@ -1,6 +1,6 @@
 use unbounded_gpsd::GpsdConnection;
 use unbounded_gpsd::types::{Response, TpvResponse};
-use wifilocation::{get_api_key_from_file, get_towers, WifiGPS};
+//use wifilocation::{get_api_key_from_file, get_towers, WifiGPS};
 
 use logger::{FlightLogger, ModuleLogger};
 use configurations::Config;

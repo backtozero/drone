@@ -35,11 +35,11 @@ pub struct State {
 impl Default for State {
     fn default() -> State {
         State {
-            position: Vector3::zero(),
-            velocity: Vector3::zero(),
+            position: Vector3::zeros(),
+            velocity: Vector3::zeros(),
             attitude: UnitQuaternion::identity(),
-            gyro_bias: Vector3::zero(),
-            acc_bias: Vector3::zero(),
+            gyro_bias: Vector3::zeros(),
+            acc_bias: Vector3::zeros(),
             magnetic_field: Vector3::new(18924.2, -2318.0, 50104.5).normalize(),
         }
     }
@@ -63,7 +63,7 @@ impl KalmanFilter {
         pred_rx: Receiver<PredictionReading>,
         update_rx: Receiver<UpdateReading>,
     ) -> KalmanFilter {
-        let mut X_dx = StateJacobian::zero();
+        let mut X_dx = StateJacobian::zeros();
         {
             let mut top_left = X_dx.fixed_slice_mut::<U6, U6>(0, 0);
             top_left.fill_with_identity();
@@ -73,14 +73,14 @@ impl KalmanFilter {
             bottom_right.fill_with_identity();
         }
 
-        let mut F_i: MatrixMN<f64, U18, U12> = MatrixMN::zero();
+        let mut F_i: MatrixMN<f64, U18, U12> = MatrixMN::zeros_generic(U18, U12);
         F_i.fixed_slice_mut::<U12, U12>(3, 0).fill_with_identity();
 
         let acc_noise = (0.5 as f64);
         let gyro_noise = (0.1 as f64).to_radians();
         let acc_bias_walk = (0.0 as f64);
         let gyro_bias_walk = (0.0 as f64);
-        let mut Q_i: MatrixN<f64, U12> = MatrixN::zero();
+        let mut Q_i: MatrixN<f64, U12> = MatrixN::zeros_generic(U12, U12);
         {
             let mut acc_noise_mat = Q_i.fixed_slice_mut::<U3, U3>(0, 0);
             acc_noise_mat.fill_with_identity();
@@ -109,12 +109,12 @@ impl KalmanFilter {
             prediction_rx: pred_rx,
             update_rx: update_rx,
             x: State::default(),
-            P: CovarianceMatrix::zero(),
+            P: CovarianceMatrix::zeros(),
             u_p: PredictionReading::default(),
             state_jacobian: X_dx,
             F: F,
             Q: F_i * Q_i * F_i.transpose(),
-            H_field: MatrixMN::zero(),
+            H_field: MatrixMN::zeros_generic(U3, U19),
             thrust: 0.0,
         }
     }

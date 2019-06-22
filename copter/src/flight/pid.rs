@@ -24,7 +24,7 @@ impl PID {
             kp: 0.0,
             ki: 0.0,
             kd: 1.0,
-            integral: Vector3::zero(),
+            integral: Vector3::zeros(),
             last_update: PreciseTime::now(),
         }
     }

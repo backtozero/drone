@@ -1,5 +1,6 @@
 #![feature(custom_attribute)]
 #![feature(const_fn)]
+#![feature(stmt_expr_attributes)]
 // Common Imports
 extern crate configurations;
 extern crate debug_server;
@@ -17,7 +18,7 @@ extern crate i2cdev_lsm9ds0;
 extern crate i2csensors;
 extern crate pca9685;
 extern crate unbounded_gpsd;
-extern crate wifilocation;
+//extern crate wifilocation;
 // extern crate rust_pigpio;
 
 // Math Imports

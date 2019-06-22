@@ -16,15 +16,15 @@ i2cdev-lsm303d = { path = "./local/i2cdev-sensors/i2cdev-lsm303d" }
 i2cdev-lsm9ds0 = { path = "./local/i2cdev-sensors/i2cdev-lsm9ds0" }
 pca9685 = { path = "./local/rust-pca9685" }
 ads111x = { path = "./local/rust-ads1115" }
-unbounded-gpsd = "0.4.2"
-wifilocation = { path = "./local/wifilocation" }
+unbounded-gpsd = "0.4.3"
+#wifilocation = { path = "./local/wifilocation" }
 mqtt-protocol = "0.4"
 configurations = { path = "./configurations" }
 logger = { path = "./logger" }
-nalgebra = "0.13.1"
+nalgebra = "0.18.0"
 typenum = "1.9.0"
 num = "0.1"
-alga = "0.5.2"
+alga = "0.9.1"
 
 [[bin]]
 name = "drone"

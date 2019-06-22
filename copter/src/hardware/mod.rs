@@ -158,8 +158,8 @@ pub struct PredictionReading {
 impl Default for PredictionReading {
     fn default() -> PredictionReading {
         PredictionReading {
-            angular_rate: Vector3::zero(),
-            acceleration: Vector3::zero(),
+            angular_rate: Vector3::zeros(),
+            acceleration: Vector3::zeros(),
         }
     }
 }
@@ -175,7 +175,7 @@ pub struct UpdateReading {
 impl Default for UpdateReading {
     fn default() -> UpdateReading {
         UpdateReading {
-            acceleration: Vector3::zero(),
+            acceleration: Vector3::zeros(),
             magnetic_reading: None,
             pressure: 0.0,
             gps_information: None,
